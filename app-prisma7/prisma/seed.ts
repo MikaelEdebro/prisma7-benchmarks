@@ -10,13 +10,22 @@ const adapter = new PrismaPg({
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 100; i++) {
+    const postId = randomUUID();
     await prisma.post.create({
       data: {
-        id: randomUUID(),
+        id: postId,
         title: `Title ${i}`,
         body: `Body text ${i}`,
         createdAt: new Date(),
+        comments: {
+          create: Array.from({ length: 10 }, (_, j) => ({
+            id: randomUUID(),
+            content: `This is comment ${j} on post ${i}. Lorem ipsum dolor sit amet.`,
+            authorName: `Author ${j}`,
+            createdAt: new Date(),
+          })),
+        },
       },
     });
   }

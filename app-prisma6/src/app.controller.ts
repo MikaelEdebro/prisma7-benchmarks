@@ -24,6 +24,26 @@ export class AppController {
     });
   }
 
+  @Get("posts-with-comments")
+  getPostsWithComments() {
+    return this.prisma.post.findMany({
+      take: 100,
+      include: {
+        comments: true,
+      },
+    });
+  }
+
+  @Get("posts-with-comments/:id")
+  getPostWithCommentsById(@Param("id") id: string) {
+    return this.prisma.post.findUnique({
+      where: { id },
+      include: {
+        comments: true,
+      },
+    });
+  }
+
   @Post("posts")
   createPost(@Body() body: { title: string; body: string }) {
     return this.prisma.post.create({
