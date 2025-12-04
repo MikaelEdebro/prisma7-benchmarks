@@ -25,47 +25,47 @@ After upgrading from Prisma 6 to Prisma 7, we observed significant performance r
 
 Simple read operations without joins (100 posts in database).
 
-| Metric | Prisma 6 | Prisma 7 | Difference |
-|--------|----------|----------|------------|
-| **List Posts (avg)** | 6.14ms | 10.23ms | Prisma 6 is **40% faster** |
-| **List Posts (p95)** | 8.78ms | 13.86ms | Prisma 6 is **37% faster** |
-| **Get By ID (avg)** | 4.68ms | 7.39ms | Prisma 6 is **37% faster** |
-| **Get By ID (p95)** | 6.36ms | 9.73ms | Prisma 6 is **35% faster** |
-| **Total Reads** | 635,290 | 404,000 | Prisma 6 handled **57% more reads** |
-| **Throughput** | 5,278/s | 3,356/s | Prisma 6 is **57% higher** |
+| Metric               | Prisma 6 | Prisma 7 | Difference                          |
+| -------------------- | -------- | -------- | ----------------------------------- |
+| **List Posts (avg)** | 6.14ms   | 10.23ms  | Prisma 6 is **40% faster**          |
+| **List Posts (p95)** | 8.78ms   | 13.86ms  | Prisma 6 is **37% faster**          |
+| **Get By ID (avg)**  | 4.68ms   | 7.39ms   | Prisma 6 is **37% faster**          |
+| **Get By ID (p95)**  | 6.36ms   | 9.73ms   | Prisma 6 is **35% faster**          |
+| **Total Reads**      | 635,290  | 404,000  | Prisma 6 handled **57% more reads** |
+| **Throughput**       | 5,278/s  | 3,356/s  | Prisma 6 is **57% higher**          |
 
 ### 2. Write-and-Read Benchmark
 
 Create a post, then immediately read it back.
 
-| Metric | Prisma 6 | Prisma 7 | Difference |
-|--------|----------|----------|------------|
-| **Create Post (avg)** | 6.48ms | 8.91ms | Prisma 6 is **27% faster** |
-| **Create Post (p95)** | 9.16ms | 12.41ms | Prisma 6 is **26% faster** |
-| **Get Post (avg)** | 5.67ms | 8.56ms | Prisma 6 is **34% faster** |
-| **Get Post (p95)** | 8.10ms | 11.68ms | Prisma 6 is **31% faster** |
+| Metric                | Prisma 6 | Prisma 7 | Difference                 |
+| --------------------- | -------- | -------- | -------------------------- |
+| **Create Post (avg)** | 6.48ms   | 8.91ms   | Prisma 6 is **27% faster** |
+| **Create Post (p95)** | 9.16ms   | 12.41ms  | Prisma 6 is **26% faster** |
+| **Get Post (avg)**    | 5.67ms   | 8.56ms   | Prisma 6 is **34% faster** |
+| **Get Post (p95)**    | 8.10ms   | 11.68ms  | Prisma 6 is **31% faster** |
 
 ### 3. Join-Heavy Benchmark
 
 Queries with `include` to fetch related data (100 posts, 1000 comments - 10 comments per post).
 
-| Metric | Prisma 6 | Prisma 7 | Difference |
-|--------|----------|----------|------------|
-| **List with Join (avg)** | 29.56ms | 50.47ms | Prisma 6 is **41% faster** |
-| **List with Join (p95)** | 63.06ms | 105.37ms | Prisma 6 is **40% faster** |
-| **Get By ID with Join (avg)** | 9.86ms | 14.94ms | Prisma 6 is **34% faster** |
-| **Get By ID with Join (p95)** | 14.41ms | 22.88ms | Prisma 6 is **37% faster** |
-| **Total Reads** | 297,950 | 196,950 | Prisma 6 handled **51% more reads** |
-| **Throughput** | 2,471/s | 1,633/s | Prisma 6 is **51% higher** |
+| Metric                        | Prisma 6 | Prisma 7 | Difference                          |
+| ----------------------------- | -------- | -------- | ----------------------------------- |
+| **List with Join (avg)**      | 29.56ms  | 50.47ms  | Prisma 6 is **41% faster**          |
+| **List with Join (p95)**      | 63.06ms  | 105.37ms | Prisma 6 is **40% faster**          |
+| **Get By ID with Join (avg)** | 9.86ms   | 14.94ms  | Prisma 6 is **34% faster**          |
+| **Get By ID with Join (p95)** | 14.41ms  | 22.88ms  | Prisma 6 is **37% faster**          |
+| **Total Reads**               | 297,950  | 196,950  | Prisma 6 handled **51% more reads** |
+| **Throughput**                | 2,471/s  | 1,633/s  | Prisma 6 is **51% higher**          |
 
 ## Overall Performance Summary
 
-| Operation Type | Performance Difference |
-|----------------|------------------------|
-| Simple reads | 35-40% slower in Prisma 7 |
-| Write operations | 26-27% slower in Prisma 7 |
-| Join queries | 34-41% slower in Prisma 7 |
-| Overall throughput | 51-57% lower in Prisma 7 |
+| Operation Type     | Performance Difference    |
+| ------------------ | ------------------------- |
+| Simple reads       | 35-40% slower in Prisma 7 |
+| Write operations   | 26-27% slower in Prisma 7 |
+| Join queries       | 34-41% slower in Prisma 7 |
+| Overall throughput | 51-57% lower in Prisma 7  |
 
 ## Key Observations
 
