@@ -1,0 +1,10 @@
+node_modules
+dist
+
+app-prisma6/node_modules
+app-prisma6/dist
+app-prisma6/src/generated/prisma
+
+app-prisma7/node_modules
+app-prisma7/dist
+app-prisma7/src/generated/prisma

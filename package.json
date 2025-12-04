@@ -1,0 +1,22 @@
+{
+  "name": "prisma7-benchmarks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "read-heavy.js",
+  "scripts": {
+    "install": "npm install --prefix ./app-prisma6 & npm install --prefix ./app-prisma7",
+    "start": "npm start --prefix ./app-prisma6 & npm start --prefix ./app-prisma7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikaelEdebro/prisma7-benchmarks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MikaelEdebro/prisma7-benchmarks/issues"
+  },
+  "homepage": "https://github.com/MikaelEdebro/prisma7-benchmarks#readme"
+}
