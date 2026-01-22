@@ -28,10 +28,10 @@ There are two tests:
 
 ```bash
 # Only does reads. First it lists 100 posts, and then it fetches one by one
-k6 ./.k6/read-heavy.js
+k6 run ./.k6/read-heavy.js
 
 # Write and read. First it creates a new post, then reads the details of that created post
-k6 ./.k6/read-write.js
+k6 run ./.k6/read-write.js
 ```
 
 > Tip: Ask some AI agent to run the K6 test, and analyze the results!
