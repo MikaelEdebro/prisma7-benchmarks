@@ -31,7 +31,7 @@ There are two tests:
 k6 run ./.k6/read-heavy.js
 
 # Write and read. First it creates a new post, then reads the details of that created post
-k6 run ./.k6/read-write.js
+k6 run ./.k6/write-and-read.js
 ```
 
 > Tip: Ask some AI agent to run the K6 test, and analyze the results!
